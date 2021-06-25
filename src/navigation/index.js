@@ -6,6 +6,18 @@ import DiscoverScreen from "../screens/discoverScreen";
 import TicketScreen from "../screens/ticketScreen";
 import AccountScreen from "../screens/accountScreen";
 import DetailScreen from '../screens/detailScreen';
+import SetLocationScreen from '../screens/setLocationScreen';
+
+const RootStack = createStackNavigator();
+
+function RootStackScreen() {
+    return (
+        <RootStack.Navigator mode="modal" headerMode="none">
+            <RootStack.Screen name="Entdecken" component={DiscoverStackScreen} />
+            <RootStack.Screen name="MyModal" component={SetLocationScreen} />
+        </RootStack.Navigator>
+    );
+}
 
 const DiscoverStack = createStackNavigator();
 
@@ -48,7 +60,7 @@ export default function NavigationRoot() {
     return (
         <NavigationContainer>
             <Tab.Navigator>
-                <Tab.Screen name="Entdecken" component={DiscoverStackScreen} />
+                <Tab.Screen name="Entdecken" component={RootStackScreen} />
                 <Tab.Screen name="Tickets" component={TicketStackScreen} />
                 <Tab.Screen name="Account" component={AccountStackScreen} />
             </Tab.Navigator>
