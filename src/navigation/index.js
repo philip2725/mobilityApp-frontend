@@ -23,7 +23,7 @@ const DiscoverStack = createStackNavigator();
 
 function DiscoverStackScreen() {
     return (
-        <DiscoverStack.Navigator>
+        <DiscoverStack.Navigator screenOptions={{headerShown:false}}>
             <DiscoverStack.Screen name="Entdecken" component={DiscoverScreen} />
             <DiscoverStack.Screen name="Details" component={DetailScreen} />
         </DiscoverStack.Navigator>
