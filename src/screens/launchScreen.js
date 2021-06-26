@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text , StyleSheet} from 'react-native';
-import {LargeButton, PlainButton} from '../styles/button';
+import { View , StyleSheet} from 'react-native';
+import {LargeButton, PlainButton} from '../components/button';
 
 
-function LaunchScreen(props) {
+function LaunchScreen({ navigation }) {
     return (
         <View style={{ flex: 1, padding: 20 }}>
             
@@ -11,13 +11,12 @@ function LaunchScreen(props) {
                 
             </View>
 
-           <LargeButton title="Anmelden" border={true}/>
+           <LargeButton title="Anmelden" border={true} onPress={() => navigation.navigate('Anmelden')}/>
 
-           <LargeButton title="Registrieren"/>
+           <LargeButton title="Registrieren" onPress={() => navigation.navigate('Registrieren')} />
 
            <PlainButton title="Fortfahren ohne Anmeldung" />
            
-
 
         </View>
     );
