@@ -66,6 +66,21 @@ export function PlainButton(props) {
     );
 }
 
+export function RowButton(props) {
+
+    return (
+        <TouchableOpacity
+            style={[styles.plainButton, props.style]}
+            onPress={props.onPress}
+        >
+            <Text style={[Fonts.button.small, {
+                color: Colors.primary
+            }]}
+            >{props.title}</Text>
+        </TouchableOpacity>
+    );
+}
+
 const styles = StyleSheet.create({
     borderlessButton: {
         alignItems: "center",
