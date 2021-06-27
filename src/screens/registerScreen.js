@@ -4,7 +4,7 @@ import { PlainButton, LargeButton } from '../components/button';
 import CustomTextInput from '../components/textinput';
 import { Fonts, Spacing, Colors } from '../config';
 
-function RegisterScreen(props) {
+function RegisterScreen({ navigation }) {
     return (
         <View style={{ flex: 1, padding: 20 }}>
             <View style={styles.container}>
@@ -28,7 +28,7 @@ function RegisterScreen(props) {
 
             </View>
 
-            <LargeButton title="Registrieren" />
+            <LargeButton title="Registrieren" onPress={() => navigation.navigate('Verkehrsmittel') }/>
 
         </View>
     );

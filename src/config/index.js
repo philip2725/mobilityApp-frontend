@@ -21,7 +21,7 @@ export const Spacing = {
 
 export const Fonts = {
     header: {
-        fontSize: 30,
+        fontSize: 26,
     },
     body: {
         fontSize: 16,
