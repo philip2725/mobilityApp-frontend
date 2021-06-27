@@ -28,7 +28,7 @@ function RegisterScreen({ navigation }) {
 
             </View>
 
-            <LargeButton title="Registrieren" onPress={() => navigation.navigate('Verkehrsmittel') }/>
+            <LargeButton title="Registrieren" onPress={() => navigation.navigate('Reisepräferenzen') }/>
 
         </View>
     );
