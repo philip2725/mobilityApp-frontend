@@ -14,6 +14,8 @@ function CustomIcon(props) {
         
             <Icon
                 name={props.name}
+                type={props.type}
+                color={props.color}
                 onPress={props.onPress}
                 size={size}
             />

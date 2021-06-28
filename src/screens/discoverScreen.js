@@ -6,6 +6,7 @@ import HandleBar from '../components/handlebar';
 import CustomSearchBar from '../components/searchBar';
 import CustomIcon from '../components/icon';
 import { Colors } from '../config';
+import TransportCell from '../components/transportCell';
 
 function DiscoverScreen({ navigation }) {
 
@@ -17,7 +18,7 @@ function DiscoverScreen({ navigation }) {
                 height: 650,
             }}
         >
-            <Text>Swipe down to close</Text>
+            <TransportCell />
 
 
         </View>
