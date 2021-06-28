@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
-import { Button, View, Text } from 'react-native';
+import { Button, View, Text, StyleSheet } from 'react-native';
 import BottomSheet from 'reanimated-bottom-sheet';
 import CustomTabView from '../components/tabView';
 import HandleBar from '../components/handlebar';
+import CustomSearchBar from '../components/searchBar';
+import CustomIcon from '../components/icon';
 import { Colors } from '../config';
 
 function DiscoverScreen({ navigation }) {
@@ -23,7 +25,7 @@ function DiscoverScreen({ navigation }) {
 
 
     const renderHeader = () => (
-        <View style={{backgroundColor: Colors.white, borderTopRightRadius: 20, borderTopLeftRadius: 20}}>
+        <View style={{ backgroundColor: Colors.white, borderTopRightRadius: 20, borderTopLeftRadius: 20 }}>
             <HandleBar />
             <CustomTabView />
 
@@ -38,18 +40,28 @@ function DiscoverScreen({ navigation }) {
             <View
                 style={{
                     flex: 1,
+                    padding: 20
                 }}
             >
-                <Button
+                {/* <Button
                     title="Open Bottom Sheet"
                     onPress={() => sheetRef.current.snapTo(1)}
-                />
+                /> */}
+
+                <View style={styles.searchBarContainer}>
+                    <CustomSearchBar placeholder="Wohin?" />
+                    <CustomIcon name="business-center" size={26} style={styles.searchBarIcons} />
+                    <CustomIcon name="home" size={26} style={styles.searchBarIcons} />
+                    <CustomIcon name="star" size={26} style={styles.searchBarIcons} />
+                </View>
+
+
             </View>
 
             {/*https://github.com/osdnk/react-native-reanimated-bottom-sheet */}
             <BottomSheet
                 ref={sheetRef}
-                snapPoints={[650, 300, 0]}
+                snapPoints={[650, 300, 120]}
                 renderContent={renderContent}
                 renderHeader={renderHeader}
             />
@@ -57,5 +69,17 @@ function DiscoverScreen({ navigation }) {
 
     );
 }
+
+const styles = StyleSheet.create({
+    searchBarContainer: {
+        flexDirection: "row",
+        backgroundColor: Colors.white,
+        borderRadius: 10,
+        overflow: "hidden"
+    },
+    searchBarIcons: {
+        padding: 5
+    }
+});
 
 export default DiscoverScreen;
