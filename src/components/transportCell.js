@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         backgroundColor: Colors.gray_light,
         flexDirection: "row",
-        overflow: "hidden"
+        overflow: "hidden",
+        marginBottom: Spacing.m,
     },
     leftContainer: {
         padding: Spacing.m,

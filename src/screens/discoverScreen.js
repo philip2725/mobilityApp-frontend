@@ -19,16 +19,19 @@ function DiscoverScreen({ navigation }) {
             }}
         >
             <TransportCell />
+            <TransportCell />
 
 
         </View>
     );
 
+    const iconNames = ['train','car-rental','local-taxi','electric-scooter','directions-bike'];
+
 
     const renderHeader = () => (
         <View style={{ backgroundColor: Colors.white, borderTopRightRadius: 20, borderTopLeftRadius: 20 }}>
             <HandleBar />
-            <CustomTabView />
+            <CustomTabView icons={iconNames}/>
 
         </View>
     );

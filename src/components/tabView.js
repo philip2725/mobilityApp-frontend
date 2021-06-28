@@ -1,19 +1,28 @@
-import React from 'react';
-import { View , StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
 import { Colors, Spacing, Fonts } from '../config';
 import CustomIcon from './icon';
 
 function CustomTabView(props) {
+
+    const [transport, setTransport] = useState('train');
+
+    function handleSelection(selection) {
+        setTransport(selection)
+    }
+
     return (
 
         <View style={styles.container}>
 
-            <CustomIcon name='train' style={{backgroundColor: Colors.gray_light}}/>
-            <CustomIcon name='car-rental' />
-            <CustomIcon name='local-taxi' />
-            <CustomIcon name='electric-scooter' />
-            <CustomIcon name='directions-bike' />
-        
+            {
+                props.icons.map((iconName) => {
+                    return (
+                        <CustomIcon key={iconName} name={iconName} onPress={() => handleSelection(iconName)} style={transport == iconName ? {backgroundColor: Colors.gray_light} : {backgroundColor: Colors.white}}/>
+                    )
+                })
+            }
+
         </View>
 
     );
@@ -23,7 +32,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
         justifyContent: "space-evenly",
-        
+
     },
 
 });
