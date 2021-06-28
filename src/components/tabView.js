@@ -5,7 +5,7 @@ import CustomIcon from './icon';
 
 function CustomTabView(props) {
 
-    const [transport, setTransport] = useState('train');
+    const [transport, setTransport] = useState(props.icons[0]);
 
     function handleSelection(selection) {
         setTransport(selection)
