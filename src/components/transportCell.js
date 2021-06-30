@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Colors, Spacing, Fonts } from '../config';
 import CustomIcon from './icon';
 
 function TransportCell(props) {
+
     return (
 
-        <View style={[styles.container, props.style]}>
+        <TouchableOpacity onPress={props.onPress} style={[styles.container, props.style]}>
 
             <View style={styles.leftContainer}>
                 <Text style={styles.minutes}>59{'\n'}min</Text>
@@ -40,7 +41,7 @@ function TransportCell(props) {
 
             </View>
 
-        </View>
+        </TouchableOpacity>
     );
 }
 

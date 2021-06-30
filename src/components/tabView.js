@@ -13,7 +13,7 @@ function CustomTabView(props) {
 
     return (
 
-        <View style={styles.container}>
+        <View style={[styles.container, props.style]}>
 
             {
                 props.icons.map((iconName) => {
