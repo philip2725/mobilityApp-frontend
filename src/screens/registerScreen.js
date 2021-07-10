@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { PlainButton, LargeButton } from '../components/button';
+import { LargeButton } from '../components/button';
 import CustomTextInput from '../components/textinput';
 import { Fonts, Spacing, Colors } from '../config';
+import { updateUser } from '../redux/reducers/userSlice';
+import { useDispatch } from 'react-redux';
+import { register } from '../services/authentication';
 
 function RegisterScreen({ navigation }) {
 
@@ -11,12 +14,20 @@ function RegisterScreen({ navigation }) {
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null)
 
+    const dispatch = useDispatch();
+
     function handleRegister() {
-
         if (firstName && lastname && email && password) {
-            navigation.navigate('Rechtliche Anforderungen')
+            register(email, password).then((userCredential) => {
+                console.log("User is registered: " + userCredential.user.uid);
+                dispatch(updateUser({ firstName, lastname }))
+                navigation.navigate('Rechtliche Anforderungen')
+            })
+                .catch((err) => {
+                    console.log(err)
+                })
         } else {
-
+            console.log("You have to fill all input fields")
         }
 
     }
@@ -26,9 +37,9 @@ function RegisterScreen({ navigation }) {
             <View style={styles.container}>
                 <Text style={[styles.headline, Fonts.header]}>Registriere dich auf der Plattform!</Text>
                 <CustomTextInput placeholder="Deine Vorname" style={{ marginBottom: Spacing.l }} onChangeText={setFirstName} value={firstName} />
-                <CustomTextInput placeholder="Deine Nachname" style={{ marginBottom: Spacing.l }} onChangeText={setLastName} value={lastname}/>
-                <CustomTextInput placeholder="Deine Email-Adresse" style={{ marginBottom: Spacing.l }} onChangeText={setEmail} value={email}/>
-                <CustomTextInput placeholder="Dein Passwort" style={{ marginBottom: Spacing.l }} onChangeText={setPassword} value={password}/>
+                <CustomTextInput placeholder="Deine Nachname" style={{ marginBottom: Spacing.l }} onChangeText={setLastName} value={lastname} />
+                <CustomTextInput placeholder="Deine Email-Adresse" style={{ marginBottom: Spacing.l }} onChangeText={setEmail} value={email} />
+                <CustomTextInput placeholder="Dein Passwort" style={{ marginBottom: Spacing.l }} onChangeText={setPassword} value={password} />
 
                 <Text style={[styles.socialText, Fonts.body]}>oder melde dich mit Social Media an</Text>
 

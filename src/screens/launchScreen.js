@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { LargeButton, PlainButton } from '../components/button';
 import { useDispatch } from 'react-redux';
-import { skipLogin } from '../redux/reducers/userSlice';
+import { updateAuthStatus , skipLogin} from '../redux/reducers/userSlice';
 
 function LaunchScreen({ navigation }) {
 
@@ -19,7 +19,7 @@ function LaunchScreen({ navigation }) {
 
             <LargeButton title="Registrieren" onPress={() => navigation.navigate('Registrieren')} />
 
-            <PlainButton title="Fortfahren ohne Anmeldung" onPress={() => dispatch(skipLogin())}/>
+            <PlainButton title="Fortfahren ohne Anmeldung" onPress={() => {dispatch(updateAuthStatus(true)); dispatch(skipLogin(true))}}/>
 
 
         </View>

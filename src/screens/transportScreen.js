@@ -3,6 +3,8 @@ import { View, Text, StyleSheet } from 'react-native';
 import { PlainButton, LargeButton } from '../components/button';
 import { Fonts, Spacing, Colors } from '../config';
 import CustomCheckbox from '../components/checkbox';
+import { useDispatch } from 'react-redux';
+import { updateUser } from '../redux/reducers/userSlice';
 
 function TransportScreen({navigation}) {
 
@@ -14,6 +16,8 @@ function TransportScreen({navigation}) {
     const [scooter, setScooter] = useState(true);
     const [walk, setWalk] = useState(true);
     const [car, setCar] = useState(true);
+
+    const dispatch = useDispatch();
 
     function handleReset() {
         setCarSharing(true)
@@ -27,6 +31,7 @@ function TransportScreen({navigation}) {
     }
 
     function handleTransport() {
+        dispatch(updateUser({transportModes: {carSharing,rideSharing,taxiSharing,öpnv,bicycle,scooter,walk,car}}))
         navigation.navigate('Favoriten');
     }
 

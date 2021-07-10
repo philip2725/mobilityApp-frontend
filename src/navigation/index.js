@@ -4,11 +4,14 @@ import MainNav from './mainNav';
 import AuthenticationNav from './authenticationNav';
 import { useSelector, useDispatch } from 'react-redux';
 import firebase from '../config/firebase';
+import { updateAuthStatus } from '../redux/reducers/userSlice';
 
 export default function RootNav() {
 
     const isSignedIn = useSelector((state) => state.user.isSignedIn)
     const skipLogin = useSelector((state) => state.user.skipLogin)
+
+  
 
     const dispatch = useDispatch();
 
@@ -22,10 +25,12 @@ export default function RootNav() {
                 // ...
                 //dispatch updateUser
                 console.log("User is logged in")
+                dispatch(updateAuthStatus(true))
             } else {
                 // User is signed out
                 // ...
                 console.log("User is logged out")
+                
                 //dispatch logout user
             }
         });
@@ -37,7 +42,7 @@ export default function RootNav() {
 
     return (
         <NavigationContainer>
-            {isSignedIn || skipLogin ? <MainNav /> : <AuthenticationNav />}
+            {isSignedIn && skipLogin ? <MainNav /> : <AuthenticationNav />}
         </NavigationContainer>
     );
 }

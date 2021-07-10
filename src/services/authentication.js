@@ -2,6 +2,8 @@ import firebase from "../config/firebase";
 
 
 const auth = firebase.auth()
+const db = firebase.firestore()
+
 
 export function login(email, password) {
     return auth.signInWithEmailAndPassword(email, password)
@@ -19,5 +21,8 @@ export function logout() {
     return auth.signOut();
 }
 
+export function setUserData(data) {
+    return db.collection('users').doc(getCurrentUser().uid).set(data)
+}
 
 

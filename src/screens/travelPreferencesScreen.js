@@ -1,16 +1,20 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { PlainButton, LargeButton } from '../components/button';
-import { Fonts, Spacing, Colors } from '../config';
+import { Fonts, Spacing } from '../config';
 import CustomSlider from '../components/slider';
+import { useDispatch } from 'react-redux';
+import { updateUser } from '../redux/reducers/userSlice';
 
-function TravelPreferencesScreen({navigation}) {
+function TravelPreferencesScreen({ navigation }) {
 
     const [costEffective, setCostEffective] = useState(5);
     const [fast, setFast] = useState(5);
     const [sustainable, setSustainable] = useState(5);
     const [comfortable, setComfortable] = useState(5);
     const [sporty, setSporty] = useState(5);
+
+    const dispatch = useDispatch();
 
     function handleReset() {
         setCostEffective(5)
@@ -21,6 +25,7 @@ function TravelPreferencesScreen({navigation}) {
     }
 
     function handleTravelPreferences() {
+        dispatch(updateUser({travelPreferences: {costEffective,fast,sustainable,comfortable,sporty}}))
         navigation.navigate('Verkehrsmittel')
     }
 
@@ -32,16 +37,16 @@ function TravelPreferencesScreen({navigation}) {
                 <Text style={[Fonts.header, styles.headline]}>Deine Reisepräferenzen</Text>
                 <Text style={[Fonts.body, styles.subline]}>Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Nam condimentum tempus diam.</Text>
 
-                <CustomSlider title="Kostengünstig" value={costEffective} onValueChange={(value) => setCostEffective(value)}/>
-                <CustomSlider title="Schnell" value={fast} onValueChange={(value) => setFast(value)}/>
-                <CustomSlider title="Nachhaltig"value={sustainable} onValueChange={(value) => setSustainable(value)}/>
-                <CustomSlider title="Komfortabel" value={comfortable} onValueChange={(value) => setComfortable(value)}/>
-                <CustomSlider title="Sportlich" value={sporty} onValueChange={(value) => setSporty(value)}/>
+                <CustomSlider title="Kostengünstig" value={costEffective} onValueChange={(value) => setCostEffective(value)} />
+                <CustomSlider title="Schnell" value={fast} onValueChange={(value) => setFast(value)} />
+                <CustomSlider title="Nachhaltig" value={sustainable} onValueChange={(value) => setSustainable(value)} />
+                <CustomSlider title="Komfortabel" value={comfortable} onValueChange={(value) => setComfortable(value)} />
+                <CustomSlider title="Sportlich" value={sporty} onValueChange={(value) => setSporty(value)} />
 
             </View>
 
-            <PlainButton title="zurücksetzen" onPress={handleReset}/>
-            <LargeButton title="weiter" onPress={handleTravelPreferences}/>
+            <PlainButton title="zurücksetzen" onPress={handleReset} />
+            <LargeButton title="weiter" onPress={handleTravelPreferences} />
 
         </View>
     );
