@@ -8,6 +8,7 @@ function CustomTextInput(props) {
             style={[styles.input, Fonts.body, props.style]}
             onChangeText={props.onChangeText}
             placeholder={props.placeholder}
+            value={props.value}
         />
     );
 }

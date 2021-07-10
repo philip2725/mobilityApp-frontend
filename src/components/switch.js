@@ -12,7 +12,7 @@ function CustomSwitch(props) {
                 thumbColor={props.isEnabled ? "#f5dd4b" : "#f4f3f4"}
                 ios_backgroundColor={Colors.gray_medium}
                 onValueChange={props.onValueChange}
-                value={props.isEnabled}
+                value={props.value}
             />
 
         </View>

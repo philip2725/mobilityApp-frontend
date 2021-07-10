@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { PlainButton, LargeButton } from '../components/button';
 import CustomTextInput from '../components/textinput';
 import { Fonts, Spacing, Colors } from '../config';
 
 function RegisterScreen({ navigation }) {
+
+    const [firstName, setFirstName] = useState(null);
+    const [lastname, setLastName] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null)
+
+    function handleRegister() {
+
+        if (firstName && lastname && email && password) {
+            navigation.navigate('Rechtliche Anforderungen')
+        } else {
+
+        }
+
+    }
+
     return (
         <View style={{ flex: 1, padding: 20 }}>
             <View style={styles.container}>
                 <Text style={[styles.headline, Fonts.header]}>Registriere dich auf der Plattform!</Text>
-                <CustomTextInput placeholder="Deine Vorname" style={{ marginBottom: Spacing.l }} />
-                <CustomTextInput placeholder="Deine Nachname" style={{ marginBottom: Spacing.l }} />
-                <CustomTextInput placeholder="Deine Email-Adresse" style={{ marginBottom: Spacing.l }} />
-                <CustomTextInput placeholder="Dein Passwort" style={{marginBottom: Spacing.l}}/>
+                <CustomTextInput placeholder="Deine Vorname" style={{ marginBottom: Spacing.l }} onChangeText={setFirstName} value={firstName} />
+                <CustomTextInput placeholder="Deine Nachname" style={{ marginBottom: Spacing.l }} onChangeText={setLastName} value={lastname}/>
+                <CustomTextInput placeholder="Deine Email-Adresse" style={{ marginBottom: Spacing.l }} onChangeText={setEmail} value={email}/>
+                <CustomTextInput placeholder="Dein Passwort" style={{ marginBottom: Spacing.l }} onChangeText={setPassword} value={password}/>
 
                 <Text style={[styles.socialText, Fonts.body]}>oder melde dich mit Social Media an</Text>
 
@@ -28,7 +44,7 @@ function RegisterScreen({ navigation }) {
 
             </View>
 
-            <LargeButton title="Registrieren" onPress={() => navigation.navigate('Rechtliche Anforderungen') }/>
+            <LargeButton title="Registrieren" onPress={handleRegister} />
 
         </View>
     );

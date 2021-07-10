@@ -10,12 +10,15 @@ function CustomSlider(props) {
         <View style={[styles.container, props.style]}>
          
             <Slider
-                value={0.5}
+                value={props.value}
                 onValueChange={props.onValueChange}
                 maximumTrackTintColor={Colors.gray_light}
                 minimumTrackTintColor={Colors.primary}
                 thumbTintColor={Colors.primary}
                 thumbStyle={styles.thumb}
+                maximumValue={10}
+                minimumValue={0}
+                step={1}
             />
 
             <View style={styles.sublineContainer}>

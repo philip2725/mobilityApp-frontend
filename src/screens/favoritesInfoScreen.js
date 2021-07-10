@@ -2,9 +2,17 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { LargeButton , RowButton } from '../components/button';
 import { Fonts, Spacing, Colors } from '../config';
+import {register} from '../services/authentication';
 
 
-function FavoritesInfoScreen(props) {
+function FavoritesInfoScreen() {
+
+
+    async function handleFavorites() {
+        let userCredential = await register('1@1.com','123456');
+        console.log("User is registered: " + userCredential.user.uid);
+    }
+
     return (
         <View style={{ flex: 1, padding: 20 }}>
 
@@ -19,7 +27,7 @@ function FavoritesInfoScreen(props) {
 
             </View>
 
-            <LargeButton title="weiter" />
+            <LargeButton title="weiter" onPress={handleFavorites}/>
 
         </View>
     );
