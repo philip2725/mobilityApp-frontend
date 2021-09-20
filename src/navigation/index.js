@@ -11,7 +11,7 @@ export default function RootNav() {
     const isSignedIn = useSelector((state) => state.user.isSignedIn)
     const skipLogin = useSelector((state) => state.user.skipLogin)
 
-  
+
 
     const dispatch = useDispatch();
 
@@ -26,12 +26,29 @@ export default function RootNav() {
                 //dispatch updateUser
                 console.log("User is logged in")
                 dispatch(updateAuthStatus(true))
+
+
+                // console.log("USER UID : " + uid);
+                // Firebase.getUserData(uid).then(function (doc) {
+                //   if (doc.exists) {
+                //     // console.log("Document data:", doc.data());
+                //     let data = doc.data()
+                //     data.uid = uid
+                //     dispatch(updateUser(data))
+                //   } else {
+                //     // doc.data() will be undefined in this case
+                //     console.log("No such document!");
+                //   }
+                // }).catch(function (error) {
+                //   console.log("Error getting document:", error);
+                // });
             } else {
                 // User is signed out
                 // ...
                 console.log("User is logged out")
-                
+
                 //dispatch logout user
+                dispatch(updateAuthStatus(false))
             }
         });
 

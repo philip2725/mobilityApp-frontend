@@ -13,7 +13,7 @@ function AccountScreen({ navigation }) {
             <Text>Account screen</Text>
             <Button
                 title="Logout"
-                onPress={() => logout().then(() => {dispatch(skipLogin(false)); dispatch(updateAuthStatus(false))} )}
+                onPress={logout}
             />
         </View>
     );
